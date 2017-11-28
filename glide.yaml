@@ -39,10 +39,6 @@ import:
 - package: github.com/jrick/logrotate
   subpackages:
   - rotator
-- package: golang.org/x/crypto
-  subpackages:
-  - ripemd160
-  - ssh/terminal
 - package: github.com/jrick/logrotate
   subpackages:
   - rotator
