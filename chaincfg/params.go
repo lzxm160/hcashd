@@ -28,7 +28,7 @@ var (
 	// mainPowLimit is the highest proof of work value a Hypercash block can
 	// have for the main network.  It is the value 2^224 - 1.
 	// mainPowLimit = new(big.Int).Sub(new(big.Int).Lsh(bigOne, 228), bigOne)
-	mainPowLimit = new(big.Int).Sub(new(big.Int).Lsh(bigOne, 255), bigOne)
+	mainPowLimit = new(big.Int).Sub(new(big.Int).Lsh(bigOne, 254), bigOne)
 	// testNetPowLimit is the highest proof of work value a Hypercash block
 	// can have for the test network.  It is the value 2^232 - 1.
 	testNetPowLimit = new(big.Int).Sub(new(big.Int).Lsh(bigOne, 232), bigOne)
@@ -477,7 +477,7 @@ var MainNetParams = Params{
 	DifficultyRate:           16,
 	MaxMicroPerKey:           31,
 	// PowLimitBits:             0x1d0fffff,
-	PowLimitBits:			  0x207fffff,
+	PowLimitBits:			  0x200fffff,
 	ReduceMinDifficulty:      false,
 	// ReduceMinDifficulty:      true,
 	MinDiffReductionTime:     0, // Does not apply since ReduceMinDifficulty false
