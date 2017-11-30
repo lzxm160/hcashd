@@ -645,8 +645,8 @@ var TestNet2Params = Params{
 	PowLimit:                 testNetPowLimit,
 	DifficultyRate:           16,
 	MaxMicroPerKey:           31,
-	// PowLimitBits:             0x1e00ffff,
-	PowLimitBits:             0x207fffff,
+	PowLimitBits:             0x1e00ffff,
+	// PowLimitBits:             0x207fffff,
 	ReduceMinDifficulty:      false,
 	MinDiffReductionTime:     0, // Does not apply since ReduceMinDifficulty false
 	GenerateSupported:        true,
