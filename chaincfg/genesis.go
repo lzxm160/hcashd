@@ -79,7 +79,7 @@ var genesisBlock = wire.MsgBlock{
 		StakeRoot:    chainhash.Hash{},
 		Timestamp:    time.Unix(1509076800, 0), // Fri, 27 Oct 2017 12:00:00 GMT
 		// Bits:         0x1d0fffff,               // Difficulty 32767
-		Bits: 0x200fffff,
+		Bits: 0x1eefffff,
 		SBits:        2 * 1e8,                  // 2 Coin
 		Nonce:        0x00000000,
 		StakeVersion: 0,
