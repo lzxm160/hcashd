@@ -79,7 +79,7 @@ var genesisBlock = wire.MsgBlock{
 		StakeRoot:    chainhash.Hash{},
 		Timestamp:    time.Unix(1509076800, 0), // Fri, 27 Oct 2017 12:00:00 GMT
 		// Bits:         0x1d0fffff,               // Difficulty 32767
-		Bits: 0x1eefffff,
+		Bits: 0x207fffff,
 		SBits:        2 * 1e8,                  // 2 Coin
 		Nonce:        0x00000000,
 		StakeVersion: 0,
@@ -151,7 +151,8 @@ var testNet2GenesisBlock = wire.MsgBlock{
 		PrevBlock:    chainhash.Hash{},
 		MerkleRoot:   testNet2GenesisMerkleRoot,
 		Timestamp:    time.Unix(1489550400, 0), // 2017-03-15 TestNet10
-		Bits:         0x1e00ffff,
+		// Bits:         0x1e00ffff,
+		Bits:         0x207fffff,
 		SBits:        20000000,
 		Nonce:        0x18aea41a,
 		StakeVersion: 0,
