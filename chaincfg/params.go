@@ -477,7 +477,8 @@ var MainNetParams = Params{
 	DifficultyRate:           16,
 	MaxMicroPerKey:           31,
 	PowLimitBits:             0x1d0fffff,
-	ReduceMinDifficulty:      false,
+	// ReduceMinDifficulty:      false,
+	ReduceMinDifficulty:      true,
 	MinDiffReductionTime:     0, // Does not apply since ReduceMinDifficulty false
 	GenerateSupported:        false,
 	MaximumBlockSizes:        []int{2048000},
