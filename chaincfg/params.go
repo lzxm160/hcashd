@@ -28,7 +28,7 @@ var (
 	// mainPowLimit is the highest proof of work value a Hypercash block can
 	// have for the main network.  It is the value 2^224 - 1.
 	// mainPowLimit = new(big.Int).Sub(new(big.Int).Lsh(bigOne, 228), bigOne)
-	mainPowLimit = new(big.Int).Sub(new(big.Int).Lsh(bigOne, 240), bigOne)
+	mainPowLimit = new(big.Int).Sub(new(big.Int).Lsh(bigOne, 255), bigOne)
 	// testNetPowLimit is the highest proof of work value a Hypercash block
 	// can have for the test network.  It is the value 2^232 - 1.
 	testNetPowLimit = new(big.Int).Sub(new(big.Int).Lsh(bigOne, 232), bigOne)
