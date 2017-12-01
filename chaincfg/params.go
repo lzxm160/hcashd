@@ -607,7 +607,8 @@ var MainNetParams = Params{
 	TicketsPerBlock:         5,
 	TicketMaturity:          128/*256*/,
 	TicketExpiry:            40960, // 5*TicketPoolSize
-	CoinbaseMaturity:        128/*256*/,
+	// CoinbaseMaturity:        128/*256*/,
+	CoinbaseMaturity:        1,
 	SStxChangeMaturity:      1,
 	TicketPoolSizeWeight:    4,
 	StakeDiffAlpha:          1, // Minimal
