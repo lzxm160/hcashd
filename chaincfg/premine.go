@@ -10,7 +10,7 @@ package chaincfg
 var BlockOneLedgerMainNet = []*TokenPayout{
 	{"HsPfMqukBtSP47Kfjc56eovGdoMGgKe5suD", 10000 * 1e8}, //wancc
 	{"HsZ63qkazmoWa6ynHkmgKttZz56qJKjQFGs", 10000 * 1e8}, //fanlq
-	{"HsF4tYLz9JpUFk9aPLC7U2AN8Deq6LkyoWc", 10000 * 1e8}, //shanyl
+	{"HsD4mKh7JBpqvRY2HdA75kDBHjm7XtmxsG5", 10000 * 1e8}, //shanyl
 	{"HsZKbCUvcpjfHAJpDfWikD7E2oXUGR4ge6q", 10000 * 1e8}, //panc
 	{"HsNu7JN9SeNb3cH7BJWMiSSpPqY6rz8BSXW", 10000 * 1e8}, //guxy
 	{"HsamDEnZXPRczM4tNTrKbvUZA8fUSe2TqPk", 10000 * 1e8}, //dengcg
