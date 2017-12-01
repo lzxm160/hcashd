@@ -604,11 +604,11 @@ var MainNetParams = Params{
 	MinimumStakeDiff:        2 * 1e8, // 2 Coin
 	TicketPoolSize:          8192,
 	TicketsPerBlock:         5,
-	// TicketMaturity:          128/*256*/,
-	TicketMaturity:          1/*256*/,
+	TicketMaturity:          128/*256*/,
+	// TicketMaturity:          1/*256*/,
 	TicketExpiry:            40960, // 5*TicketPoolSize
-	// CoinbaseMaturity:        128/*256*/,
-	CoinbaseMaturity:        1,
+	CoinbaseMaturity:        128/*256*/,
+	// CoinbaseMaturity:        1,
 	SStxChangeMaturity:      1,
 	TicketPoolSizeWeight:    4,
 	StakeDiffAlpha:          1, // Minimal
@@ -617,8 +617,8 @@ var MainNetParams = Params{
 	StakeVersionInterval:    144 * 2 * 7, // ~1 week
 	MaxFreshStakePerBlock:   20,          // 4*TicketsPerBlock
 	StakeEnabledHeight:      128 + 128/*256 + 256*/,   // CoinbaseMaturity + TicketMaturity
-	// StakeValidationHeight:   512,        // ~14 days
-	StakeValidationHeight:   1,
+	StakeValidationHeight:   512,        // ~14 days
+	// StakeValidationHeight:   1,
 	StakeBaseSigScript:      []byte{0x00, 0x00},
 	StakeMajorityMultiplier: 3,
 	StakeMajorityDivisor:    4,
