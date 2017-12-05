@@ -1,0 +1,15 @@
+=============== Dec 4, 2017 (CST) ===============
+14:42:29.150585 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+14:42:29.157347 db@open opening
+14:42:29.179054 version@stat F·[] S·0B[] Sc·[]
+14:42:29.187047 db@janitor F·2 G·0
+14:42:29.187589 db@open done T·29.653321ms
+16:37:42.347649 memdb@flush N·3 S·93B
+16:37:42.411346 memdb@flush created L0@3 N·3 S·260B "\x00\x00\x00..loc,v1":"bid..bid,v3"
+16:37:42.434228 version@stat F·[1] S·260B[260B] Sc·[0.25]
+16:37:42.525580 memdb@flush committed F·1 T·177.217413ms
+16:37:42.525740 journal@remove removed @1
+16:37:42.624196 transaction@flush created L0@4 N·1164 S·84KiB "\x00\x00\x00..ate,v4":"bid..bid,v1023"
+16:37:42.624480 version@stat F·[2] S·84KiB[84KiB] Sc·[0.50]
+16:37:42.707770 db@close closing
+16:37:42.711657 db@close done T·3.885773ms
