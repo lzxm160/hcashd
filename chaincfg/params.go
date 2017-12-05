@@ -480,36 +480,37 @@ var MainNetParams = Params{
 	PowLimitBits:             0x207fffff,
 	ReduceMinDifficulty:      false,
 	MinDiffReductionTime:     0, // Does not apply since ReduceMinDifficulty false
-	GenerateSupported:        true,
+	GenerateSupported:        false,
 	MaximumBlockSizes:        []int{2048000},
-	MaxTxSize:                1000000,
-	TargetTimePerBlock:       time.Second,
+	MaxTxSize:                2048000,
+	TargetTimePerBlock:       time.Minute * 5,
 	WorkDiffAlpha:            1,
-	WorkDiffWindowSize:       8,
-	WorkDiffWindows:          4,
-	TargetTimespan:           time.Second * 8, // TimePerBlock * WindowSize
+	WorkDiffWindowSize:       144,
+	WorkDiffWindows:          20,
+	TargetTimespan:           time.Minute * 5 * 144, // TimePerBlock * WindowSize
 	RetargetAdjustmentFactor: 4,
 
 	// Subsidy parameters.
-	BaseSubsidy:              50000000000,
-	MulSubsidy:               100,
-	DivSubsidy:               101,
-	SubsidyReductionInterval: 128,
+	BaseSubsidy:              5000000000, //
+	MulSubsidy:               1000,
+	DivSubsidy:               1005,
+	SubsidyReductionInterval: 1543,
 	WorkRewardProportion:     45,
 	StakeRewardProportion:    45,
 	BlockTaxProportion:       10,
 
 	// Checkpoints ordered from oldest to newest.
-	Checkpoints: nil,
+	Checkpoints: []Checkpoint{
+	//	{30,newHashFromStr("00000df9e4054bd941145c7ea9dbefc29e47ed564cc2fdb254720ab07a016938")},
+	//	{200,newHashFromStr("00000019ed43fba03c72b03cbd7a706c50b56819379b478da57184363fd90a68")},
+		},
 
-	// Consensus rule change deployments.
-	//
 	// The miner confirmation window is defined as:
 	//   target proof of work timespan / target proof of work spacing
-	RuleChangeActivationQuorum:     160, // 10 % of RuleChangeActivationInterval * TicketsPerBlock
-	RuleChangeActivationMultiplier: 3,   // 75%
+	RuleChangeActivationQuorum:     4032, // 10 % of RuleChangeActivationInterval * TicketsPerBlock
+	RuleChangeActivationMultiplier: 3,    // 75%
 	RuleChangeActivationDivisor:    4,
-	RuleChangeActivationInterval:   320, // 320 seconds
+	RuleChangeActivationInterval:   2016 * 4, // 4 weeks
 	Deployments: map[uint32][]ConsensusDeployment{
 		4: {{
 			Vote: Vote{
@@ -536,8 +537,8 @@ var MainNetParams = Params{
 					IsNo:        false,
 				}},
 			},
-			StartTime:  0,             // Apr 26th, 2017
-			ExpireTime: math.MaxInt64, // Apr 26th, 2018
+			StartTime:  1493164800, // Apr 26th, 2017
+			ExpireTime: 1524700800, // Apr 26th, 2018
 		}, {
 			Vote: Vote{
 				Id:          VoteIDLNSupport,
@@ -563,8 +564,8 @@ var MainNetParams = Params{
 					IsNo:        false,
 				}},
 			},
-			StartTime:  0,             // Apr 26th, 2017
-			ExpireTime: math.MaxInt64, // Oct 26th, 2017
+			StartTime:  1493164800, // Apr 26th, 2017
+			ExpireTime: 1508976000, // Oct 26th, 2017
 		}},
 	},
 
@@ -574,13 +575,14 @@ var MainNetParams = Params{
 	// Reject previous block versions once a majority of the network has
 	// upgraded.
 	// 95% (950 / 1000)
-	BlockEnforceNumRequired:    51,
-	BlockRejectNumRequired:     75,
-	BlockUpgradeNumToCheck:     100,
-	MicroBlockValidationHeight: 256,
+	BlockEnforceNumRequired: 750,
+	BlockRejectNumRequired:  950,
+	BlockUpgradeNumToCheck:  1000,
+
+	MicroBlockValidationHeight: 64,
 
 	// Mempool parameters
-	RelayNonStdTxs: true,
+	RelayNonStdTxs: false,
 
 	// Address encoding magics
 	NetworkAddressPrefix: "H",
@@ -600,22 +602,22 @@ var MainNetParams = Params{
 	HDCoinType: 20,
 
 	// Hypercash PoS parameters
-	MinimumStakeDiff:        20000,
-	TicketPoolSize:          64,
+	MinimumStakeDiff:        2 * 1e8, // 2 Coin
+	TicketPoolSize:          8192,
 	TicketsPerBlock:         5,
-	TicketMaturity:          16,
-	TicketExpiry:            384, // 6*TicketPoolSize
-	CoinbaseMaturity:        16,
+	TicketMaturity:          128/*256*/,
+	TicketExpiry:            40960, // 5*TicketPoolSize
+	CoinbaseMaturity:        128/*256*/,
 	SStxChangeMaturity:      1,
 	TicketPoolSizeWeight:    4,
-	StakeDiffAlpha:          1,
-	StakeDiffWindowSize:     8,
-	StakeDiffWindows:        8,
-	StakeVersionInterval:    8 * 2 * 7,
-	MaxFreshStakePerBlock:   20,            // 4*TicketsPerBlock
-	StakeEnabledHeight:      16 + 16,       // CoinbaseMaturity + TicketMaturity
-	StakeValidationHeight:   16 + (64 * 2), // CoinbaseMaturity + TicketPoolSize*2
-	StakeBaseSigScript:      []byte{0xDE, 0xAD, 0xBE, 0xEF},
+	StakeDiffAlpha:          1, // Minimal
+	StakeDiffWindowSize:     144,
+	StakeDiffWindows:        20,
+	StakeVersionInterval:    144 * 2 * 7, // ~1 week
+	MaxFreshStakePerBlock:   20,          // 4*TicketsPerBlock
+	StakeEnabledHeight:      128 + 128/*256 + 256*/,   // CoinbaseMaturity + TicketMaturity
+	StakeValidationHeight:   512,        // ~14 days
+	StakeBaseSigScript:      []byte{0x00, 0x00},
 	StakeMajorityMultiplier: 3,
 	StakeMajorityDivisor:    4,
 
@@ -641,8 +643,8 @@ var TestNet2Params = Params{
 	PowLimit:       testNetPowLimit,
 	DifficultyRate: 16,
 	MaxMicroPerKey: 31,
-	PowLimitBits:   0x1e00ffff,
-	// PowLimitBits:             0x207fffff,
+	//PowLimitBits:   0x1e00ffff,
+	PowLimitBits:             0x207fffff,
 	ReduceMinDifficulty:      false,
 	MinDiffReductionTime:     0, // Does not apply since ReduceMinDifficulty false
 	GenerateSupported:        true,

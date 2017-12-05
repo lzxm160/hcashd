@@ -82,13 +82,11 @@ var genesisBlock = wire.MsgBlock{
 		StakeRoot:    chainhash.Hash{},
 		Timestamp:    time.Unix(1509076800, 0), // Fri, 27 Oct 2017 12:00:00 GMT
 		Bits:         0x207fffff, // 545259519
-		SBits:        0,
-		Nonce:        0,
+		SBits:        2 * 1e8,                  // 2 Coin
+		Nonce:        0x00000000,
 		StakeVersion: 0,
-		Height:       0,
 	},
 	Transactions:  []*wire.MsgTx{&genesisCoinbaseTx},
-	STransactions: []*wire.MsgTx{},
 }
 
 // genesisHash is the hash of the first block in the block chain for the main
