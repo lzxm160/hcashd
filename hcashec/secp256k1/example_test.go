@@ -24,8 +24,9 @@ func Example_signMessage() {
 		return
 	}
 	privKey, pubKey := secp256k1.PrivKeyFromBytes(secp256k1.S256(), pkBytes)
-	fmt.Println(privKey)
-	fmt.Println(pubKey)
+
+	fmt.Println(len(privKey) + ":" + privKey)
+	fmt.Println(len(pubKey) + ":" + pubKey)
 	// Sign a message using the private key.
 	message := "test message"
 	messageHash := chainhash.HashB([]byte(message))
