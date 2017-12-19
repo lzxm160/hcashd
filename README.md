@@ -1,3 +1,4 @@
+tag beforeaddquntum
 # Overview of Hybrid Consensus Scheme in Hcash
 
 [![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
