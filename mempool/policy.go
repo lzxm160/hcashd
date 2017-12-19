@@ -184,7 +184,9 @@ func checkInputsStandard(tx *hcashutil.Tx, txType stake.TxType, utxoView *blockc
 		entry := utxoView.LookupEntry(&prevOut.Hash)
 		originPkScriptVer := entry.ScriptVersionByIndex(prevOut.Index)
 		originPkScript := entry.PkScriptByIndex(prevOut.Index)
-		switch txscript.GetScriptClass(originPkScriptVer, originPkScript) {
+		scriptClass := txscript.GetScriptClass(originPkScriptVer, originPkScript)
+
+		switch  scriptClass{
 		case txscript.ScriptHashTy:
 			numSigOps := txscript.GetPreciseSigOpCount(
 				txIn.SignatureScript, originPkScript, true)
