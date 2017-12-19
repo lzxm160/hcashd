@@ -470,7 +470,7 @@ var MainNetParams = Params{
 	Net:         wire.MainNet,
 	DefaultPort: "14008",
 	DNSSeeds:    []string{
-	//	"testnet-seeds.hcashtech.org",
+		"testnet-seeds.hcashtech.org",
 	},
 
 	// Chain parameters
