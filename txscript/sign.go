@@ -14,6 +14,7 @@ import (
 	"github.com/HcashOrg/hcashd/wire"
 	"github.com/HcashOrg/hcashutil"
 	bs "github.com/HcashOrg/hcashd/crypto/bliss"
+	"github.com/HcashOrg/hcashd/crypto/lms"
 )
 
 // RawTxInSignature returns the serialized ECDSA signature for the input idx of
@@ -70,6 +71,11 @@ func RawTxInSignatureAlt(tx *wire.MsgTx, idx int, subScript []byte,
 		sig = chainec.SecSchnorr.NewSignature(r, s)
 	case bliss:
 		sig, err = bs.Bliss.Sign(key.(bs.PrivateKey), hash)
+		if err != nil {
+			return nil, fmt.Errorf("cannot sign tx input: %s", err)
+		}
+	case lm:
+		sig, err = lms.LMS.Sign(key.(lms.PrivateKey), hash)
 		if err != nil {
 			return nil, fmt.Errorf("cannot sign tx input: %s", err)
 		}
@@ -135,6 +141,8 @@ func SignatureScriptAlt(tx *wire.MsgTx, idx int, subscript []byte,
 		pub = chainec.SecSchnorr.NewPublicKey(pubx, puby)
 	case bliss:
 		pub = privKey.(bs.PrivateKey).PublicKey()
+	case lm:
+		pub = privKey.(lms.PrivateKey).PublicKey()
 	}
 	pkData := pub.Serialize()
 

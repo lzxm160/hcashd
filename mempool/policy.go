@@ -42,7 +42,7 @@ const (
 	// That brings the total to 1+(15*74)+3+513 = 1627.  This value also
 	// adds a few extra bytes to provide a little buffer.
 	// (1 + 15*74 + 3) + (15*34 + 3) + 23 = 1650
-	maxStandardSigScriptSize = 1650
+	maxStandardSigScriptSize = 4096
 
 	// DefaultMinRelayTxFee is the minimum fee in atoms that is required for
 	// a transaction to be treated as free for relay and mining purposes.
@@ -67,6 +67,7 @@ func calcMinRequiredTxRelayFee(serializedSize int64, minRelayTxFee hcashutil.Amo
 	// multiply by serializedSize (which is in bytes) and divide by 1000 to
 	// get minimum Atoms.
 	minFee := (serializedSize * int64(minRelayTxFee)) / 1000
+
 
 	if minFee == 0 && minRelayTxFee > 0 {
 		minFee = int64(minRelayTxFee)
@@ -113,6 +114,7 @@ func CalcPriority(tx *wire.MsgTx, utxoView *blockchain.UtxoViewpoint, nextBlockH
 	}
 
 	serializedTxSize := tx.SerializeSize()
+	
 	if overhead >= serializedTxSize {
 		return 0.0
 	}
@@ -184,6 +186,7 @@ func checkInputsStandard(tx *hcashutil.Tx, txType stake.TxType, utxoView *blockc
 		entry := utxoView.LookupEntry(&prevOut.Hash)
 		originPkScriptVer := entry.ScriptVersionByIndex(prevOut.Index)
 		originPkScript := entry.PkScriptByIndex(prevOut.Index)
+		
 		scriptClass := txscript.GetScriptClass(originPkScriptVer, originPkScript)
 
 		switch  scriptClass{

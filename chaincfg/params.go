@@ -363,10 +363,12 @@ type Params struct {
 	// Address encoding magics
 	PubKeyAddrID     [2]byte // First 2 bytes of a P2PK address
 	PubKeyBlissAddrID [2]byte
+	PubKeyLmsAddrID  [2]byte
 	PubKeyHashAddrID [2]byte // First 2 bytes of a P2PKH address
 	PKHEdwardsAddrID [2]byte // First 2 bytes of an Edwards P2PKH address
 	PKHSchnorrAddrID [2]byte // First 2 bytes of a secp256k1 Schnorr P2PKH address
 	PKHBlissAddrID   [2]byte // First 2 bytes of a Bliss address
+	PKHLmsAddrID   	 [2]byte // First 2 bytes of a LMS address
 	ScriptHashAddrID [2]byte // First 2 bytes of a P2SH address
 	PrivateKeyID     [2]byte // First 2 bytes of a WIF private key
 
@@ -505,6 +507,7 @@ var MainNetParams = Params{
 	Checkpoints: []Checkpoint{
 	//	{30,newHashFromStr("00000df9e4054bd941145c7ea9dbefc29e47ed564cc2fdb254720ab07a016938")},
 	//	{200,newHashFromStr("00000019ed43fba03c72b03cbd7a706c50b56819379b478da57184363fd90a68")},
+		{28952,newHashFromStr("00000005f6263ebb38395fcdc810bc462f34f063454056a4965cca9c3d280d70")},	
 		},
 
 	// The miner confirmation window is defined as:
@@ -590,10 +593,12 @@ var MainNetParams = Params{
 	NetworkAddressPrefix: "H",
 	PubKeyAddrID:         [2]byte{0x19, 0xa4}, // starts with Hk
 	PubKeyBlissAddrID:    [2]byte{0x07, 0xc3}, // starts with Hk
+	PubKeyLmsAddrID:      [2]byte{0x07, 0x77}, // starts with Hp
 	PubKeyHashAddrID:     [2]byte{0x09, 0x7f}, // starts with Hs
 	PKHEdwardsAddrID:     [2]byte{0x09, 0x60}, // starts with He
 	PKHSchnorrAddrID:     [2]byte{0x09, 0x41}, // starts with HS
 	PKHBlissAddrID:       [2]byte{0x09, 0x57}, // starts with Hb
+	PKHLmsAddrID:		  [2]byte{0x09, 0x34}, // starts with HM
 	ScriptHashAddrID:     [2]byte{0x09, 0x5a}, // starts with Hc
 	PrivateKeyID:         [2]byte{0x19, 0xab}, // starts with Hm
 
@@ -729,11 +734,13 @@ var TestNet2Params = Params{
 	// Address encoding magics
 	NetworkAddressPrefix: "T",
 	PubKeyAddrID:         [2]byte{0x28, 0xf7}, // starts with Tk
-	PubKeyBlissAddrID:    [2]byte{0x0b, 0xf0}, // starts with Tk
+	PubKeyBlissAddrID:    [2]byte{0x0e, 0xd1}, // starts with Tk
+	PubKeyLmsAddrID:      [2]byte{0x0f, 0x19}, // starts with Tp
 	PubKeyHashAddrID:     [2]byte{0x0f, 0x21}, // starts with Ts
 	PKHEdwardsAddrID:     [2]byte{0x0f, 0x01}, // starts with Te
 	PKHSchnorrAddrID:     [2]byte{0x0e, 0xe3}, // starts with TS
 	PKHBlissAddrID:       [2]byte{0x0e, 0xf8}, // starts with Tb
+	PKHLmsAddrID:		  [2]byte{0x0e, 0xd6}, // starts with TM
 	ScriptHashAddrID:     [2]byte{0x0e, 0xfc}, // starts with Tc
 	PrivateKeyID:         [2]byte{0x23, 0x0e}, // starts with Pt
 
@@ -900,11 +907,13 @@ var SimNetParams = Params{
 	// Address encoding magics
 	NetworkAddressPrefix: "S",
 	PubKeyAddrID:         [2]byte{0x27, 0x6f}, // starts with Sk
-	PubKeyBlissAddrID:    [2]byte{0x0b, 0xef}, // starts with Sk
+	PubKeyBlissAddrID:    [2]byte{0x0e, 0x40}, // starts with SK
+	PubKeyLmsAddrID:      [2]byte{0x0e, 0x89}, // starts with Sp
 	PubKeyHashAddrID:     [2]byte{0x0e, 0x91}, // starts with Ss
 	PKHEdwardsAddrID:     [2]byte{0x0e, 0x71}, // starts with Se
 	PKHSchnorrAddrID:     [2]byte{0x0e, 0x53}, // starts with SS
 	PKHBlissAddrID:       [2]byte{0x0e, 0x68}, // starts with Sb
+	PKHLmsAddrID:		  [2]byte{0x0e, 0x45}, // starts with SM
 	ScriptHashAddrID:     [2]byte{0x0e, 0x6c}, // starts with Sc
 	PrivateKeyID:         [2]byte{0x23, 0x07}, // starts with Ps
 
